@@ -12,7 +12,6 @@ struct WinePlan {
 WinePlan createPlan(int barrels, int testers) {
     int usedTesters = 0;
 
-    // Find the minimum number of testers needed.
     while ((1 << usedTesters) < barrels + 1) {
         usedTesters++;
     }
@@ -27,11 +26,10 @@ WinePlan createPlan(int barrels, int testers) {
     plan.possible = true;
     plan.schedule.resize(usedTesters);
 
-    // Each barrel gets a unique binary code.
     plan.decoder.assign(1 << usedTesters, -1);
 
     for (int barrel = 1; barrel <= barrels; barrel++) {
-        int mask = barrel;  // Important: use barrel, NOT barrel - 1
+        int mask = barrel; 
 
         for (int i = 0; i < usedTesters; i++) {
             if (mask & (1 << i)) {
@@ -69,8 +67,6 @@ int main() {
         cout << "\n";
     }
 
-    // Example: testers 0 and 2 die.
-    // Death pattern = 0000000101 = 5.
     int deathMask = 5;
 
     cout << "\nPoisoned barrel: "
