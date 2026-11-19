@@ -38,7 +38,6 @@ WinePlan designWineTests(int testers) {
             }
         }
 
-        // Save the decoding information
         plan.decoder[mask] = barrel;
     }
 
